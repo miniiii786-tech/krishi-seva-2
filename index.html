@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishi Seva / Kishan Sarthi</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Auth View -->
+    <div id="auth-view" class="auth-container min-h-screen bg-slate-900 flex-center relative">
+        <div class="lang-selector absolute-top-right">
+            <i data-lucide="globe" class="icon-emerald"></i>
+            <select id="lang-select-auth" class="bg-transparent text-white">
+                <option value="en" class="text-black">English</option>
+                <option value="hi" class="text-black">हिंदी</option>
+            </select>
+        </div>
+        
+        <div class="card glass-card max-w-md text-center">
+            <div class="icon-box rotate-3 mb-6 mx-auto">
+                <i data-lucide="warehouse" class="text-white icon-large"></i>
+            </div>
+            <h1 class="text-4xl font-extrabold text-white mb-2"><span id="t-title">Krishi Seva</span> <span class="text-emerald">Sync</span></h1>
+            
+            <form id="login-form" class="mt-8 space-y-6">
+                <div>
+                    <label id="t-mobileLabel" class="block text-emerald-50 font-bold mb-2 text-left">Mobile Number</label>
+                    <div class="input-group">
+                        <span class="prefix">+91</span>
+                        <input type="tel" id="phone-input" class="form-input text-2xl" placeholder="00000 00000" maxlength="10">
+                    </div>
+                </div>
+                <button type="submit" id="t-getOtp" class="btn btn-primary w-full text-xl flex-center gap-2">
+                    Get OTP <i data-lucide="arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard View (Hidden by default) -->
+    <div id="dashboard-view" class="hidden min-h-screen relative">
+        <header class="glass-header sticky-top border-b">
+            <div class="max-w-7xl mx-auto flex-between h-20 px-6">
+                <div class="flex-center gap-3">
+                    <div class="bg-emerald icon-box-small rounded-xl flex-center">
+                        <i data-lucide="warehouse" class="text-white"></i>
+                    </div>
+                    <h1 class="text-2xl font-extrabold text-gray-900"><span id="t-dashTitle">Krishi Seva</span></h1>
+                </div>
+                <div class="flex-center gap-4">
+                    <select id="lang-select-dash" class="border-select">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                    <button id="logout-btn" class="text-gray-500 flex-center gap-1 hover-red">
+                        <i data-lucide="user"></i> <span id="t-logout">Logout</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-6 py-8 grid-layout">
+            <!-- Booking Form -->
+            <div class="card bg-white shadow-sm border h-600 flex-col">
+                <div class="bg-gradient-emerald p-6 text-white">
+                    <h2 id="t-bookSlot" class="text-2xl font-bold flex-center gap-2"><i data-lucide="tractor"></i> Book Mandi Slot</h2>
+                </div>
+                
+                <form id="booking-form" class="p-6 space-y-6 overflow-y-auto">
+                    <div>
+                        <label id="t-farmerName" class="block text-lg font-extrabold text-gray-800 mb-2">Farmer Name</label>
+                        <input type="text" id="farmer-name" class="form-input text-xl border-gray" required>
+                    </div>
+                    <div>
+                        <label id="t-cropType" class="block text-lg font-extrabold text-gray-800 mb-2">Crop Type</label>
+                        <select id="crop-select" class="form-input text-xl border-gray">
+                            <option value="Wheat">Wheat</option>
+                            <option value="Mustard">Mustard</option>
+                            <option value="Soybean">Soybean</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label id="t-volume" class="block text-lg font-extrabold text-gray-800 mb-2">Volume (Quintals)</label>
+                        <input type="number" id="volume-input" class="form-input text-2xl border-gray" placeholder="0" required>
+                    </div>
+                    <button type="submit" id="t-confirmBtn" class="btn btn-primary w-full text-2xl mt-4 shadow-lg">
+                        Confirm Booking
+                    </button>
+                </form>
+            </div>
+
+            <!-- History Panel -->
+            <div class="card bg-white shadow-sm border h-600 flex-col">
+                <div class="bg-gray-50 border-b p-6">
+                    <h2 id="t-historyTitle" class="text-2xl font-bold flex-center gap-2 text-gray-800">
+                        <i data-lucide="smartphone"></i> My History & Live Status
+                    </h2>
+                </div>
+                <div id="history-container" class="p-6 space-y-5 overflow-y-auto flex-1">
+                    <!-- Bookings injected here via JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
